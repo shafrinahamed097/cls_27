@@ -17,11 +17,11 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
 
             // Relationship
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->useCurrentOnUpdate()->casecadeOnUpdate()->restrictOnDelete();
 
 
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate()->casecadeOnUpdate()->restrictOnDelete();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
